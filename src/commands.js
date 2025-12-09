@@ -7,11 +7,10 @@ const commandFiles = await fs.readdir(__dirname + "/commands");
 
 export let commands = [];
 export const setupCommands = async (bot) => {
-    commands = await Promise.all(
-        commandFiles.map((file) => import(`./commands/${file}`))
-    );
-    commands.forEach((command) => {
-        command.onLoad?.(bot);
-    });
-    console.log(commands);
-}
+  commands = await Promise.all(
+    commandFiles.map((file) => import(`./commands/${file}`))
+  );
+  commands.forEach((command) => {
+    command.onLoad?.(bot);
+  });
+};
